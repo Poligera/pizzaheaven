@@ -1,10 +1,11 @@
+<a href="{% url 'home' %}">Go HOME</a>
 <h1>Order a pizza!</h1>
 
  {% comment %} variables below come from "CONTEXT" object from "views.py" {% endcomment %}
          {% comment %} this will only render if we have accessed PK which will be an argument to access the right pizza order form from DB:  {% endcomment %}
 <h2>{{ note }}</h2>
     {% if created_pizza_pk %}
-    <a href="{% url 'edit-order' created_pizza_pk  %}">Edit Your Order</a>
+    <a href="{% url 'edit_order' created_pizza_pk  %}">Edit Your Order</a>
     {% endif %}
 
 <form action="{% url 'order' %}" method="post">

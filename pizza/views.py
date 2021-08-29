@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .forms import PizzaForm
-from .models import Size, Pizza
+from .models import Pizza
 
 # Create your views here.
 def home(request):
@@ -33,5 +33,12 @@ def edit_order(request, pk):
         if filled_form.is_valid():
             filled_form.save()
             form = filled_form
+            context = {'pizza': pizza}
+            return render(request, 'pizza/edit_success.html', context)
     context = {'pizzaform': form, 'pizza': pizza}
     return render(request, 'pizza/edit_order.html', context)
+
+# def edit_success(request, pk):
+#     pizza = Pizza.objects.get(pk=pk)
+#     context = {'pizza': pizza}
+#     return render(request, 'pizza/edit_success.html', context)
